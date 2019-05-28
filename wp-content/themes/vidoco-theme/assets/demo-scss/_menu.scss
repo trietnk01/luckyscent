@@ -4,12 +4,12 @@
       ul{
         li{
           a{
-            font-family:$f_regular;
+            font-family:$f_light;
             font-size: 14px;
             text-transform: uppercase;
             background-color: #187b5b;
             &:link,&:visited{
-              color: #ffffff;
+              color: #333333;
             }
           }
         }
@@ -20,19 +20,20 @@
     >li{
       >a{
         font-family:$f_light;
-        font-size: 12px;
+        font-size: 14px;
         text-transform: uppercase;
-        background:transparent;
-        padding:15px 15px;
+        background: transparent;
+        padding: 15px 12px;
         border-right: 0;
         @media(max-width: 1024px){
-          padding: 15px 10px;
+          padding: 15px 8px;
+          font-size: 12px;
         }
         &:link,&:visited{
-          color: #fff;
+          color: #333333;
         }
         &:hover,&.selected{
-          color: #F47920;
+          color: $mau_1;
           background:transparent !important;
         }
       }
@@ -44,7 +45,7 @@
       &.current-menu-item{
         >a{
           background:transparent;
-          color: #F47920;
+          color: #45b3de;
         }
       }
     }
