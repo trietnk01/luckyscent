@@ -63,6 +63,16 @@ Footer template
                 );
                 wp_nav_menu($args);
                 ?>
+                <div class="connect-with-us">
+                  <h4 class="conntect-with-us-title">Connect with us</h4>
+                  <ul class="iconsocialbg" itemscope itemtype="http://schema.org/Organization">
+                    <li><a itemprop="sameAs" href="<?php echo get_field("setting_thong_tin_chung_facebook","option"); ?>"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a itemprop="sameAs" href="<?php echo get_field("setting_thong_tin_chung_twitter","option"); ?>"><i class="fab fa-twitter"></i></a></li>
+                    <li><a itemprop="sameAs" href="<?php echo get_field("setting_thong_tin_chung_google_plus","option"); ?>"><i class="fab fa-google-plus-g"></i></a></li>
+                    <li><a itemprop="sameAs" href="<?php echo get_field("setting_thong_tin_chung_instagram","option"); ?>"><i class="fab fa-instagram"></i></a></li>
+                    <li><a itemprop="sameAs" href="<?php echo get_field("setting_thong_tin_chung_youtube","option"); ?>"><i class="fab fa-youtube"></i></a></li>
+                  </ul>
+                </div>
               </div>
             </div>
             <div class="col-md-3">
@@ -114,6 +124,9 @@ Footer template
           </div>
         </div>
       </div>
+      <div class="copyright-box">
+        <span>&copy;</span><span class="margin-left-5">Luckyscent Inc. All Rights Reserved</span>
+      </div>
     </div>
   </div>
 </div>
@@ -130,6 +143,9 @@ Footer template
     </div>
   </div>
 </div>
+<div class="scrollTop">
+    <a href="javascript:void(0);"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+ </div>
 <?php
 wp_footer();
 ?>
