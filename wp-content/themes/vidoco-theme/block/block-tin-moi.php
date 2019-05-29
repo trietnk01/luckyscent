@@ -1,4 +1,4 @@
-<h2 class="tin-moi">Tin mới</h2>
+<h3 class="tin-moi">Tin mới</h3>
 <?php
 $args = array(
     'post_type' => 'post',
@@ -36,7 +36,7 @@ if($the_query_tin_moi->have_posts()){
                     </a>
                 </div>
                 <div class="box-tin-moi-info">
-                    <h3 class="box-tin-moi-title"><a href="<?php echo @$permalink; ?>"><?php echo wp_trim_words(@$title,55, null ); ?></a></h3>
+                    <h4 class="box-tin-moi-title"><a href="<?php echo @$permalink; ?>"><?php echo wp_trim_words(@$title,55, null ); ?></a></h4>
                     <div class="box-tin-moi-date"><?php echo @$date_post; ?></div>
                 </div>
                 <div class="clr"></div>
