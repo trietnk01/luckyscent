@@ -51,8 +51,31 @@ jQuery(document).ready(function(){
             0:{
                 items:1
             },
+            360:{
+                items:3
+            },
             576:{
                 items:6
+            }
+        }
+    });
+    jQuery(".owl-carousel-featured-videos").owlCarousel({
+        autoplay:false,
+        loop:true,
+        margin:30,
+        nav:true,
+        navText: ["<i class=\"fas fa-chevron-left\"></i>","<i class=\"fas fa-chevron-right\"></i>"],
+        dots:false,
+        mouseDrag: true,
+        touchDrag: true,
+        lazyLoad: true,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            576:{
+                items:3
             }
         }
     });

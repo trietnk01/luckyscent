@@ -85,24 +85,84 @@
                     <div class="row">
                         <div class="col">
                             <div class="product-category-box">
-                                <div class="product-guilta">
-                                    <h3 class="product-category-guilta-title">New & Noteworthy</h3>
-                                    <div class="owl-carousel-featured-product-category owl-carousel owl-theme owl-loaded">
+                                <?php
+                                for ($j=0; $j < 2; $j++) {
+                                    ?>
+                                    <div class="product-guilta">
+                                        <h2 class="product-category-guilta-title">New & Noteworthy</h2>
+                                        <div class="owl-carousel-featured-product-category owl-carousel owl-theme owl-loaded">
+                                            <?php
+                                            for ($i=0;$i<12;$i++) {
+                                                ?>
+                                                <div class="item">
+                                                    <div class="magento">
+                                                        <div>
+                                                            <a href="javascript:void(0);">
+                                                                <figure>
+                                                                    <div style="background-image: url('<?php echo wp_upload_dir()["url"]."/73217.jpg"; ?>');background-repeat: no-repeat;background-size: cover;padding-top: calc(100% / (600/863));"></div>
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                        <h4 class="magento-title"><a href="javascript:void(0);"><?php echo wp_trim_words( "Sundazed",55,null ); ?></a></h4>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                            <div class="box-videos">
+                                <h2 class="sent-bar-video-review">Video</h2>
+                                <div class="box-video-wrapper">
+                                    <div class="owl-carousel-featured-videos owl-carousel owl-theme owl-loaded">
                                         <?php
                                         for ($i=0;$i<12;$i++) {
                                             ?>
                                             <div class="item">
-                                                <div class="magento">
-                                                    <a href="javascript:void(0);">
-                                                        <figure>
-                                                            <div style="background-image: url('<?php echo wp_upload_dir()["url"]."/73217.jpg"; ?>');background-repeat: no-repeat;background-size: cover;padding-top: calc(100% / (600/863));"></div>
-                                                        </figure>
+                                                <div class="video-pin-box">
+                                                    <a href="javascript:void(0);" class="js-modal-btn" data-video-id="jkAsbMkLnWo">
+                                                        <div style="background-image: url('<?php echo wp_upload_dir()["url"]."/vid-home1.jpg"; ?>');background-size: cover;background-repeat: no-repeat;padding-top: calc(100% / (359/199));">
+
+                                                        </div>
+                                                        <div class="overlay-youtube">
+                                                        </div>
+                                                        <div class="youtube-icon">
+                                                            <div class="box-youtube-icon">
+                                                                <div style="background-image: url('<?php echo wp_get_upload_dir()["url"].'/youtube-icon.png'; ?>');background-repeat: no-repeat;background-size: cover;padding-top: calc(100% / (48/48));"></div>
+                                                            </div>
+                                                        </div>
                                                     </a>
                                                 </div>
                                             </div>
                                             <?php
                                         }
                                         ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-featured-article">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <a href="javascript:void(0);">
+                                            <figure>
+                                                <div style="background-image: url('<?php echo wp_upload_dir()["url"]."/1680Outside2.jpg" ?>');background-repeat: no-repeat;background-size: cover;padding-top: calc(100% / (327/225))"></div>
+                                            </figure>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="box-featured-info">
+                                            <h3 class="box-featured-article-title"><a href="javascript:void(0);"><?php echo wp_trim_words( "Come In For a Visit!", 55,null ); ?> </a></h3>
+                                            <div class="box-featured-excerpt">
+                                                <?php echo  wp_trim_words( "Browse the whole shop, including candles, home scent, bath and body and...of course...fragrances. Indulge in a scent consultation...or let us perform one for you online. Either way...we'll help you find something that fits. No need to be intimidated, fragrance should be fun...and it is, at Scent Bar. Now in Hollywood and downtown Los Angeles. ", 55, null ); ?>
+                                            </div>
+                                            <div class="box-featured-learn-more">
+                                                <a href="javascript:void(0);"><span>Xem tiếp</span><span class="margin-left-5">></span></a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
