@@ -14,6 +14,12 @@ if(count($arrCart) > 0){
 		$quantity+=(float)$cart['product_quantity'];
 	}
 }
+$q="";
+if(isset($_POST["q"])){
+	$q=$_POST["q"];
+}
+$page_id_search_product = $zController->getHelper('GetPageId')->get('_wp_page_template','search-product.php');
+$permalink_search_product=get_permalink( $page_id_search_product);
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes() ?> data-user-agent="<?php echo $_SERVER['HTTP_USER_AGENT'] ?>">

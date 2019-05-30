@@ -36,7 +36,7 @@ if(count(@$args_meta_query) > 0){
 $the_query_product=new WP_Query($args);
 /* end set the_query */
 /* start setup pagination */
-$totalItemsPerPage=14;
+$totalItemsPerPage=16;
 $pageRange=3;
 $currentPage=1;
 if(!empty(@$_POST["filter_page"]))          {
@@ -64,30 +64,36 @@ if(have_posts()){
     wp_reset_postdata();
 }
 ?>
-<div class="container margin-bottom-20">
+<div class="container">
     <div class="row">
         <div class="col">
-            <?php include get_template_directory()."/block/block-breadcrumb.php"; ?>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-3">
-            <div class="doreco">
-                <?php include get_template_directory()."/block/block-category-menu-product-left-side.php"; ?>
+            <div class="calo-box">
+                <div class="row">
+                    <div class="col">
+                        <?php include get_template_directory()."/block/block-breadcrumb.php"; ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="doreco">
+                            <?php include get_template_directory()."/block/block-category-menu-product-left-side.php"; ?>
+                        </div>
+                        <div class="doreco">
+                            <?php include get_template_directory()."/block/block-khoang-gia.php"; ?>
+                        </div>
+                        <div class="margin-top-20">
+                            <?php include get_template_directory()."/block/block-ads.php";  ?>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <form name="frm_category" method="POST" class="frm-category-za">
+                            <input type="hidden" name="filter_page" value="1" />
+                            <h1 class="category-header"><?php echo @$title_tim_kiem; ?></h1>
+                            <?php require_once PLUGIN_PATH . DS . "templates" . DS . "frontend". DS . "loop-za-category.php"; ?>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="doreco">
-                <?php include get_template_directory()."/block/block-khoang-gia.php"; ?>
-            </div>
-            <div class="margin-top-20">
-                <?php include get_template_directory()."/block/block-ads.php";  ?>
-            </div>
-        </div>
-        <div class="col-lg-9">
-            <form name="frm_category" method="POST" class="frm-category-za">
-                <input type="hidden" name="filter_page" value="1" />
-                <h1 class="category-header"><?php echo @$title_tim_kiem; ?></h1>
-                <?php require_once PLUGIN_PATH . DS . "templates" . DS . "frontend". DS . "loop-za-category.php"; ?>
-            </form>
         </div>
     </div>
 </div>
