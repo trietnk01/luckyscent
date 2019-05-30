@@ -14,7 +14,7 @@ $args = array(
     'items_wrap'        => '<ul id="%1$s" class="%2$s">%3$s</ul>',
     'depth'             => 3,
     'walker'            => '',
-    'theme_location'    => 'dm_menu_sach' ,
+    'theme_location'    => 'dm_menu_san_pham' ,
     'menu_li_actived'       => 'current-menu-item',
     'menu_item_has_children'=> 'menu-item-has-children',
 );

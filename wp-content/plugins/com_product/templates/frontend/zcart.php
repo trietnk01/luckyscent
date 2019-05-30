@@ -25,7 +25,7 @@ $permarlink_checkout = get_permalink($page_id_checkout);
                 <?php include get_template_directory()."/block/block-category-menu-product-left-side.php"; ?>
             </div>
             <div class="doreco">
-                <?php include get_template_directory()."/block/block-author.php"; ?>
+                <?php include get_template_directory()."/block/block-khoang-gia.php"; ?>
             </div>
             <div class="margin-top-20">
                 <?php include get_template_directory()."/block/block-ads.php";  ?>

@@ -41,18 +41,15 @@ if(count($arrCart) > 0){
 					</div>
 					<div class="box-search">
 						<div class="wishlist">
-							<div class="tara-sign-in"><a href="javascript:void(0);">Sign In</a></div>
-							<div class="tara-sign-in margin-left-5">|</div>
-							<div class="tara-sign-in margin-left-5"><a href="javascript:void(0);">Wishlist</a></div>
-							<div class="cart-header margin-left-5">
+							<div class="cart-header">
 								<a href="javascript:void(0);">
 									<span><i class="fas fa-shopping-cart"></i></span>
-									<span>Cart 0 Items</span>
+									<span>Cart</span><span class="cart-total margin-left-5"><?php echo @$quantity; ?></span><span class="margin-left-5">Items</span>
 								</a>
 							</div>
 						</div>
 						<form class="tim-kiem-sp" name="frm_tim_kiem_sp" action="<?php echo @$permalink_search_product; ?>" method="POST">
-							<div class="tim-kiem-txt"><input type="text" name="q" autocomplete="off" placeholder="Search by Brand, Note or Keyword" value="<?php echo @$_POST["q"]; ?>"></div>
+							<div class="tim-kiem-txt"><input type="text" name="q" autocomplete="off" placeholder="Tìm kiếm sản phẩm" value="<?php echo @$_POST["q"]; ?>"></div>
 							<div class="btn-search-product"><a href="javascript:void(0);" onclick="document.forms['frm_tim_kiem_sp'].submit();"><i class="fas fa-search"></i></a></div>
 						</form>
 					</div>

@@ -96,8 +96,10 @@ if($the_query_product->have_posts()){
         wp_reset_postdata();
         ?>
     </div>
+    <div class="margin-top-15">
+        <?php echo @$pagination->showPagination(); ?>
+    </div>
     <?php
-    echo @$pagination->showPagination();
 }else{
     ?>
     <div class="text-center margin-top-15">Đang cập nhật</div>

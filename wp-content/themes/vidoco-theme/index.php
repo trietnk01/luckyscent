@@ -12,17 +12,25 @@
                     <div class="row">
                         <div class="col-md-8">
                             <div class="slide-home-page">
-                                <div class="owl-carousel-banner owl-carousel owl-theme owl-loaded">
-                                    <?php
-                                    for ($i=1;$i<=4;$i++) {
+                                <?php
+                                $data_banner=get_field("hp_banner_rpt","option");{
+                                    if (count(@$data_banner) > 0) {
                                         ?>
-                                        <div class="item">
-                                            <div style="background-image:url('<?php echo wp_upload_dir()["url"]."/slide-".$i.".jpg"; ?>');background-repeat: no-repeat;background-size: cover;padding-top:calc(100% / (809/431));"></div>
+                                        <div class="owl-carousel-banner owl-carousel owl-theme owl-loaded">
+                                            <?php
+                                            foreach ($data_banner as $key => $value) {
+                                                ?>
+                                                <div class="item">
+                                                    <div style="background-image:url('<?php echo @$value["hp_banner_item"]; ?>');background-repeat: no-repeat;background-size: cover;padding-top:calc(100% / (809/431));"></div>
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
                                         </div>
                                         <?php
                                     }
-                                    ?>
-                                </div>
+                                }
+                                ?>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -56,32 +64,60 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="product-featured">
-                                <div class="owl-carousel-featured-product owl-carousel owl-theme owl-loaded">
-                                    <?php
-                                    for ($i=1;$i<=9;$i++) {
-                                        ?>
-                                        <div class="item">
-                                            <div class="box-big-featured-product">
-                                                <div class="box-featured-title-wrapper"><h3 class="box-featured-title">ROSE REFERENCE</h3></div>
-                                                <div class="box-featured-product">
-                                                    <a href="javascript:void(0);">
-                                                        <figure>
-                                                            <div style="background-image: url('<?php echo wp_upload_dir()["url"]."/lustre2.jpg"; ?>');background-size: cover;background-repeat: no-repeat;padding-top: calc(100% / (240/200));"></div>
-                                                        </figure>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                    <?php
+                    $hp_featured_product_rpt=get_field("hp_featured_product_rpt","option");
+                    if(count(@$hp_featured_product_rpt) > 0){
+                        ?>
+                        <div class="row">
+                            <div class="col">
+                                <div class="product-featured">
+                                    <div class="owl-carousel-featured-product owl-carousel owl-theme owl-loaded">
                                         <?php
-                                    }
-                                    ?>
+                                        foreach ($hp_featured_product_rpt as $value) {
+                                            $post_id=$value["hp_featured_product_item"];
+                                            $args=array(
+                                                "post_type"=>"zaproduct",
+                                                "p"=>@$post_id
+                                            );
+                                            $the_query_sach_moi=new WP_Query($args);
+                                            if($the_query_sach_moi->have_posts()){
+                                                while ($the_query_sach_moi->have_posts()) {
+                                                    $the_query_sach_moi->the_post();
+                                                    $post_id=$the_query_sach_moi->post->ID;
+                                                    $permalink=get_the_permalink(@$post_id);
+                                                    $title=get_the_title(@$post_id);
+                                                    $excerpt=get_the_excerpt(@$post_id);
+                                                    $featured_img=get_the_post_thumbnail_url(@$post_id, 'full');
+                                                    $product_price=get_field("zaproduct_price",@$post_id);
+                                                    $product_price_desc_percent=get_field("zaproduct_price_desc_percent",@$post_id);
+                                                    $product_sale_price=get_field("zaproduct_sale_price",@$post_id);
+                                                    $product_count_view=get_field("zaproduct_count_view",@$post_id);
+                                                    ?>
+                                                    <div class="item">
+                                                        <div class="box-big-featured-product">
+                                                            <div class="box-featured-title-wrapper"><h3 class="box-featured-title"><?php echo wp_trim_words( @$title, 10, null ) ?></h3></div>
+                                                            <div class="box-featured-product">
+                                                                <a href="<?php echo @$permalink; ?>">
+                                                                    <figure>
+                                                                        <div style="background-image: url('<?php echo @$featured_img; ?>');background-size: cover;background-repeat: no-repeat;padding-top: calc(100% / (240/200));"></div>
+                                                                    </figure>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                }
+                                                wp_reset_postdata();
+                                            }
+                                        }
+                                        ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <?php
+                    }
+                    ?>
                     <div class="row">
                         <div class="col">
                             <div class="product-category-box">

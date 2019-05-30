@@ -11,6 +11,7 @@ function p_load_support(){
             "footer_2"    => __( "Footer 2"),
             "footer_3"    => __( "Footer 3"),
             "footer_4"    => __( "Footer 4"),
+            "dm_menu_san_pham"    => __( "Danh mục sản phẩm"),
         )
     );
 }
