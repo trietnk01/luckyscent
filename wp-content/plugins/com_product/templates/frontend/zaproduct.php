@@ -326,7 +326,7 @@ $content=null;
                             <?php include get_template_directory()."/block/block-dm-sp.php"; ?>
                         </div>
                         <div class="sach-tai-ban-hang-thang-product-detail">
-                            <?php include get_template_directory()."/block/block-sach-tai-ban-hang-thang.php"; ?>
+                            <?php include get_template_directory()."/block/block-san-pham-moi-hang-thang.php"; ?>
                         </div>
                         <div class="margin-top-15">
                             <?php include get_template_directory()."/block/block-ads.php"; ?>

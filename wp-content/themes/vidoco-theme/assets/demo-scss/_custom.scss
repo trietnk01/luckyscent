@@ -207,11 +207,12 @@
 						a{
 							font-size: 13px;
 							font-family: $f_light;
+							color: $mau;
 						}
 					}
 					.box-tin-moi-date{
 						font-size: 12px;
-						color: #e66430;
+						color: $mau_1;
 						margin-top: 5px;
 					}
 				}
@@ -348,13 +349,13 @@
 		.ruby-box{
 			margin-top: 10px;
 			.spring-fling-1{
-				font-size: 12px;
-				color: #A0A0A0;
-			}
-			.spring-fling-2{
 				a{
 					color: $mau_1;
 				}
+			}
+			.spring-fling-2{
+				font-size: 12px;
+				color: #A0A0A0;
 			}
 		}
 		.just-arrived-2{
@@ -649,7 +650,7 @@
 		}
 		.post-user-date{
 			margin-top: 15px;
-			color:#e66430;
+			color:$mau_1;
 			font-family: $f_light;
 			font-size: 13px;
 		}
@@ -673,11 +674,12 @@
 				a{
 					font-size: 14px;
 					text-transform: uppercase;
+					color: $mau;
 				}
 			}
 			.category-post-user{
 				margin-top: 10px;
-				color: #F47920;
+				color: $mau_1;
 			}
 			.category-post-excerpt{
 				margin-top: 10px;
@@ -704,12 +706,13 @@
 				line-height: 15px;
 				a{
 					font-size: 13px;
-					font-family: $f_bold;
+					color: $mau;
 				}
 			}
 			.tin-xem-nhieu-date-post{
 				font-family: $f_light;
 				font-size: 12px;
+				color: $mau_1;
 			}
 		}
 	}
@@ -738,8 +741,8 @@
 				margin-top: 10px;
 				a{
 					color: #fff;
-					padding:10px 20px;
-					background :#F47920;
+					padding:5px 20px;
+					background :$mau_1;
 					text-transform: uppercase;
 					position: relative;
 					overflow: hidden;
@@ -776,7 +779,7 @@
 		}
 		.contact-info{
 			.icon-fontawesome{
-				color: #F47920;
+				color: $mau_1;
 			}
 		}
 	}
@@ -842,8 +845,8 @@
 			margin-top: 10px;
 			a{
 				color: #fff;
-				padding:10px 20px !important;
-				background :#F47920;
+				padding:5px 15px;
+				background :$mau_1;
 				text-transform: uppercase;
 				position: relative;
 				overflow: hidden;
@@ -883,7 +886,7 @@
 					position: absolute;
 					top: 5px;
 					right: 5px;
-					background-color: #F47920;
+					background-color: $mau_1;
 					padding: 10px 7px;
 					border-radius:21px;
 					.box-cent-sale{
@@ -955,7 +958,7 @@
 				}
 				.box-pr-price-2{
 					float: left;
-					background-color: #F47920;
+					background-color: $mau_1;
 					color: #fff;
 					margin-left: 10px;
 					padding: 0px 5px;
@@ -978,7 +981,7 @@
 					float: left;
 					span{
 						margin-left: 1px;
-						color: #fc3;
+						color: $mau_1;
 						font-size: 10px;
 						&:first-child{
 							margin-left: 0;
@@ -1008,7 +1011,7 @@
 					opacity: 1;
 					&:hover{
 						.a-bg-add-to-cart{
-							background-color: #F47920;
+							background-color: $mau_1;
 						}
 					}
 				}
@@ -1034,7 +1037,7 @@
 				font-family: $f_bold;
 			}
 			.product-detail-info-right{
-				color: #F47920;
+				color: $mau_1;
 				font-family: $f_light;
 				font-size: 13px;
 			}
@@ -1045,7 +1048,7 @@
 				text-decoration: line-through;
 			}
 			.product-detail-info-gia-da-giam{
-				color: #F47920;
+				color: $mau_1;
 				font-family: $f_bold;
 				font-size: 15px;
 			}
@@ -1079,7 +1082,7 @@
 				a{
 					color: #fff;
 					padding:10px 20px !important;
-					background :#F47920;
+					background :$mau_1;
 					text-transform: uppercase;
 					position: relative;
 					overflow: hidden;
@@ -1124,18 +1127,18 @@
 					background-repeat: no-repeat;
 					background-position: left center;
 					a{
-						color: #F47920;
+						color: $mau_1;
 					}
 				}
 			}
 		}
 		.product-detail-gioi-thieu-so-bo{
-			color: #F47920;
+			color: $mau_1;
 			font-size: 20px;
 			text-transform: uppercase;
 			margin-top: 40px;
 			font-family: $f_bold;
-			border-bottom: 1px solid #F47920;
+			border-bottom: 1px solid $mau_1;
 			display: inline-block;
 			padding-bottom: 10px;
 		}
@@ -1294,7 +1297,7 @@
 					}
 				}
 				.spbc-price{
-					color: #F47920;
+					color: $mau_1;
 					font-family: $f_bold;
 					margin-top: 10px;
 				}
@@ -1339,7 +1342,7 @@
 					left: 100%;
 					width: 100%;
 					height: 100%;
-					background: #F47920;
+					background: $mau_1;
 					z-index: -1;
 					@include p-web(transition, all 0.5s);
 				}

@@ -1,4 +1,4 @@
-<h2 class="giam-gia-dac-biet">Danh mục sách</h2>
+<h2 class="giam-gia-dac-biet">Danh mục sản phẩm</h2>
 <form class="doreco-product-detail" name="doreco_product_detail" method="POST">
     <?php
     $args = array(

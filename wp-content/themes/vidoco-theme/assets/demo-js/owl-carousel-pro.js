@@ -80,7 +80,7 @@ jQuery(document).ready(function(){
         }
     });
     jQuery(".owl-carousel-product-detail-img").owlCarousel({
-        autoplay:false,
+        autoplay:true,
         loop:true,
         margin:0,
         nav:false,

@@ -42,7 +42,7 @@ if(count($arrCart) > 0){
 					<div class="box-search">
 						<div class="wishlist">
 							<div class="cart-header">
-								<a href="javascript:void(0);">
+								<a href="<?php echo @$cart_link; ?>">
 									<span><i class="fas fa-shopping-cart"></i></span>
 									<span>Cart</span><span class="cart-total margin-left-5"><?php echo @$quantity; ?></span><span class="margin-left-5">Items</span>
 								</a>

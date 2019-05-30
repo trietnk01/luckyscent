@@ -1,26 +1,26 @@
 <h2 class="giam-gia-dac-biet">Sách tái bản hàng tháng</h2>
 <?php
-$hp_sach_tai_ban_hang_thang_rpt=get_field("hp_sach_tai_ban_hang_thang_rpt","option");
-if(count($hp_sach_tai_ban_hang_thang_rpt) > 0){
+$cp_product_hot_month_rpt=get_field("cp_product_hot_month_rpt","option");
+if(count($cp_product_hot_month_rpt) > 0){
     ?>
     <div class="sach-tai-ban-hang-thang-box">
         <div class="owl-carousel-sach-tai-ban-hang-thang owl-carousel owl-theme owl-loaded">
             <?php
             $j=0;
-            foreach ($hp_sach_tai_ban_hang_thang_rpt as $key => $value) {
+            foreach ($cp_product_hot_month_rpt as $key => $value) {
                 if($j % 4 == 0){
                     echo '<div class="item">';
                 }
-                $post_id=$value["hp_sach_tai_ban_hang_thang_item"];
+                $post_id=$value["cp_product_hot_month_item"];
                 $args=array(
                     "post_type"=>"zaproduct",
                     "p"=>@$post_id
                 );
-                $the_query_sach_tai_ban_hang_thang=new WP_Query($args);
-                if($the_query_sach_tai_ban_hang_thang->have_posts()){
-                    while ($the_query_sach_tai_ban_hang_thang->have_posts()) {
-                        $the_query_sach_tai_ban_hang_thang->the_post();
-                        $post_id=$the_query_sach_tai_ban_hang_thang->post->ID;
+                $the_query_cp_product_hot_month_rpt=new WP_Query($args);
+                if($the_query_cp_product_hot_month_rpt->have_posts()){
+                    while ($the_query_cp_product_hot_month_rpt->have_posts()) {
+                        $the_query_cp_product_hot_month_rpt->the_post();
+                        $post_id=$the_query_cp_product_hot_month_rpt->post->ID;
                         $permalink=get_the_permalink(@$post_id);
                         $title=get_the_title(@$post_id);
                         $excerpt=get_the_excerpt(@$post_id);
@@ -65,7 +65,7 @@ if(count($hp_sach_tai_ban_hang_thang_rpt) > 0){
                     wp_reset_postdata();
                 }
                 $j++;
-                if($j % 4 == 0 || $j == count(@$hp_sach_tai_ban_hang_thang_rpt)){
+                if($j % 4 == 0 || $j == count(@$cp_product_hot_month_rpt)){
                     echo '</div>';
                 }
             }

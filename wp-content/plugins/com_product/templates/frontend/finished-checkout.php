@@ -13,38 +13,44 @@ if(count(@$arrCart) == 0){
 }
 ?>
 <h1 style="display: none;"><?php echo get_bloginfo( 'name', '' ); ?></h1>
-<div class="container margin-bottom-20">
+<div class="container">
     <div class="row">
         <div class="col">
-            <?php include get_template_directory()."/block/block-breadcrumb.php"; ?>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-3">
-            <div class="doreco">
-                <?php include get_template_directory()."/block/block-category-menu-product-left-side.php"; ?>
-            </div>
-            <div class="doreco">
-                <?php include get_template_directory()."/block/block-khoang-gia.php"; ?>
-            </div>
-            <div class="margin-top-20">
-                <?php include get_template_directory()."/block/block-ads.php";  ?>
-            </div>
-        </div>
-        <div class="col-lg-9">
-            <div class="margin-top-15">
-                <h2 class="com-product-shopping-cart-header">
-                    <?php
-                    if(have_posts()){
-                        while (have_posts()) {
-                            the_post();
-                            echo get_the_title();
-                        }
-                        wp_reset_postdata();
-                    }
-                    ?>
-                </h2>
+            <div class="calo-box">
+                <div class="row">
+                    <div class="col">
+                        <?php include get_template_directory()."/block/block-breadcrumb.php"; ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="doreco">
+                            <?php include get_template_directory()."/block/block-category-menu-product-left-side.php"; ?>
+                        </div>
+                        <div class="doreco">
+                            <?php include get_template_directory()."/block/block-khoang-gia.php"; ?>
+                        </div>
+                        <div class="margin-top-20">
+                            <?php include get_template_directory()."/block/block-ads.php";  ?>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="margin-top-15">
+                            <h2 class="com-product-shopping-cart-header">
+                                <?php
+                                if(have_posts()){
+                                    while (have_posts()) {
+                                        the_post();
+                                        echo get_the_title();
+                                    }
+                                    wp_reset_postdata();
+                                }
+                                ?>
+                            </h2>
 
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

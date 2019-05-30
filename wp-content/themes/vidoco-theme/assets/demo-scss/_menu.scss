@@ -7,9 +7,9 @@
             font-family:$f_light;
             font-size: 14px;
             text-transform: uppercase;
-            background-color: #187b5b;
+            background-color: $mau_1;
             &:link,&:visited{
-              color: #333333;
+              color: #fff;
             }
           }
         }
@@ -53,22 +53,22 @@
   >ul{
     >li{
       >ul{
-        margin-top: 14px;
+        margin-top: 0;
         li{
           a{
-            border-right: 1px solid #2aa984 ;
-            border-bottom: 1px solid #2aa984;
+            border-right: 1px solid #0a97e2 ;
+            border-bottom: 1px solid #0a97e2;
             width: 230px;
             padding: 10px 10px;
-            font-family: $f_bold;
+            font-family:$f_light;
             &:hover,&.selected{
-              background-color: #107b5dba !important;
+              background-color:#0a97e2 !important;
               color: #fff;
             }
           }
           &.current-menu-item{
             a{
-              background-color: #107b5dba !important;
+              background-color: #0a97e2 !important;
             }
           }
         }

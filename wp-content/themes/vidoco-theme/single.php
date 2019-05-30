@@ -144,9 +144,9 @@ $source_term_id=array();
                                                 <div class="col-sm-8">
                                                     <h3 class="tin-xem-nhieu-title"><a href="<?php echo @$permalink; ?>"><?php echo wp_trim_words(@$title,55, null ); ?></a></h3>
                                                     <div class="tin-xem-nhieu-date-post">
-                                                        <span><?php echo @$date_post; ?></span>
-                                                        <span class="margin-left-5">-</span>
-                                                        <span class="margin-left-5">22 lượt xem</span>
+
+                                                    <span><i class="far fa-clock"></i></span><span class="margin-left-5"><?php echo @$date_post; ?></span><span class="margin-left-5"><i class="far fa-heart"></i></span>
+
                                                     </div>
                                                 </div>
                                             </div>
