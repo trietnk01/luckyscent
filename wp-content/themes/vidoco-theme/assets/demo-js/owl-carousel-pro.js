@@ -113,4 +113,21 @@ jQuery(document).ready(function(){
             }
         }
     });
+    jQuery(".owl-carousel-product-thumbnail").owlCarousel({
+        autoplay:false,
+        loop:true,
+        margin:5,
+        nav:true,
+        navText: ["<i class=\"fas fa-chevron-left\"></i>","<i class=\"fas fa-chevron-right\"></i>"],
+        dots:false,
+        mouseDrag: true,
+        touchDrag: true,
+        lazyLoad: true,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:4
+            }
+        }
+    });
 });

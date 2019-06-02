@@ -1024,6 +1024,15 @@
 			padding: 10px;
 			margin-top: 15px;
 		}
+		.box-product-thumbnail{
+			margin-top: 10px;
+			.owl-carousel-product-thumbnail{
+				.thumbnail-item{
+					border:1px solid #ebebeb;
+					padding: 5px;
+				}
+			}
+		}
 		.product-detail-title{
 			margin-top: 15px;
 			font-size: 20px;

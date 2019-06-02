@@ -136,4 +136,10 @@ jQuery(document).ready(function($) {
 	$( "#amount" ).val( accounting.formatMoney(price_min, "", 0, ".",",")   + " đ" +
 		" - " + accounting.formatMoney(price_max, "", 0, ".",",")  + " đ" );
 	/* end filter price */
+	/* begin remove width - height attr */
+	$('img').removeAttr( "width" );
+	$('img').removeAttr( "height" );
+	$('.wp-caption').removeAttr('style');
+	$('img').css('width','100%');
+	/* begin remove width - height attr */
 });

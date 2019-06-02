@@ -74,6 +74,21 @@ $content=null;
                                         ?>
                                     </div>
                                 </div>
+                                <div class="box-product-thumbnail">
+                                    <div class="owl-carousel-product-thumbnail owl-carousel owl-theme owl-loaded">
+                                        <?php
+                                        foreach ($source_thumbnail as $key => $value) {
+                                            ?>
+                                            <div class="item">
+                                                <div class="thumbnail-item">
+                                                    <div style="background-image: url('<?php echo @$value; ?>');background-repeat: no-repeat;background-size: cover;padding-top: calc(100% / (340/490));"></div>
+                                                </div>
+                                            </div>
+                                            <?php
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-7">
                                 <h1 class="product-detail-title"><?php echo @$title; ?></h1>
@@ -182,7 +197,7 @@ $content=null;
                             <div class="row">
                                 <div class="col">
                                     <h2 class="product-detail-gioi-thieu-so-bo">
-                                        Giới thiệu sách
+                                        Giới thiệu sản phẩm
                                     </h2>
                                     <div class="box-product-detail-intro">
                                         <?php echo @$content; ?>
