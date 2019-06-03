@@ -140,6 +140,5 @@ jQuery(document).ready(function($) {
 	$('img').removeAttr( "width" );
 	$('img').removeAttr( "height" );
 	$('.wp-caption').removeAttr('style');
-	$('img').css('width','100%');
 	/* begin remove width - height attr */
 });
