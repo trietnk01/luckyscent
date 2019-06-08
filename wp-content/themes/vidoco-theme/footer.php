@@ -13,7 +13,7 @@ Footer template
           <div class="row">
             <div class="col-md-3">
               <div class="box-footer-child">
-                <h3 class="box-footer-child-title">Customer Service & Support</h3>
+                <h3 class="box-footer-child-title"><?php echo wp_get_nav_menu_name("footer_1"); ?></h3>
                 <?php
                 $args = array(
                   'menu'              => '',
@@ -40,7 +40,7 @@ Footer template
             </div>
             <div class="col-md-3">
               <div class="box-footer-child">
-                <h3 class="box-footer-child-title">Discover</h3>
+                <h3 class="box-footer-child-title"><?php echo wp_get_nav_menu_name("footer_2"); ?></h3>
                 <?php
                 $args = array(
                   'menu'              => '',
@@ -96,7 +96,7 @@ Footer template
             </div>
             <div class="col-md-3">
               <div class="box-footer-child">
-                <h3 class="box-footer-child-title">Shop</h3>
+                <h3 class="box-footer-child-title"><?php echo wp_get_nav_menu_name("footer_4"); ?></h3>
                 <?php
                 $args = array(
                   'menu'              => '',
