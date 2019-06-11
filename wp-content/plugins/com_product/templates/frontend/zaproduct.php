@@ -91,103 +91,129 @@ $content=null;
                                 </div>
                             </div>
                             <div class="col-md-7">
-                                <h1 class="product-detail-title"><?php echo @$title; ?></h1>
-                                <div class="product-detail-info">
-                                    <span class="product-detail-info-left">Tình trạng:</span>
-                                    <span class="product-detail-info-right">
-                                        <?php
-                                        if($source_tinh_trang_con_hang != null){
-                                            echo "Còn hàng";
-                                        }else{
-                                            echo "Hết hàng";
-                                        }
+                                <div itemscope itemtype="http://schema.org/NewsArticle" class="box-product-detail-schema">
+                                    <meta itemscope itemprop="mainEntityOfPage" itemType="https://schema.org/WebPage" itemid="https://google.com/article"/>
+                                    <h1 class="product-detail-title" itemprop="headline"><?php echo @$title; ?></h1>
+                                    <h2 style="display: none;"><?php echo get_bloginfo( 'name', 'raw' ); ?></h2>
+                                    <!-- begin schema -->
+                                    <p style="display: none;" itemprop="author" itemscope itemtype="https://schema.org/Person"> By <span itemprop="name">DienKim</span>
+                                    </p>
+                                    <p style="display: none;" itemprop="description"><?php echo @$title; ?></p>
+                                    <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject" style="display: none;">
+                                        <img src="<?php echo @$featured_img; ?>"/>
+                                        <meta itemprop="url" content="<?php echo @$featured_img; ?>">
+                                        <meta itemprop="width" content="800">
+                                        <meta itemprop="height" content="800">
+                                    </div>
+                                    <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization" style="display: none;">
+                                        <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                                            <img src="<?php echo @$featured_img; ?>"/>
+                                            <meta itemprop="url" content="<?php echo @$featured_img; ?>">
+                                            <meta itemprop="width" content="600">
+                                            <meta itemprop="height" content="60">
+                                        </div>
+                                        <meta itemprop="name" content="Google">
+                                    </div>
+                                    <meta itemprop="datePublished" content="2015-02-05T08:00:00+08:00" style="display: none;" />
+                                    <meta itemprop="dateModified" content="2015-02-05T09:20:00+08:00" style="display: none;" />
+                                    <!-- end schema -->
+                                    <div class="product-detail-info">
+                                        <span class="product-detail-info-left">Tình trạng:</span>
+                                        <span class="product-detail-info-right">
+                                            <?php
+                                            if($source_tinh_trang_con_hang != null){
+                                                echo "Còn hàng";
+                                            }else{
+                                                echo "Hết hàng";
+                                            }
+                                            ?>
+                                        </span>
+                                    </div>
+                                    <?php
+                                    if((float)@$product_price == (float)@$product_sale_price){
                                         ?>
-                                    </span>
-                                </div>
-                                <?php
-                                if((float)@$product_price == (float)@$product_sale_price){
+                                        <div class="product-detail-info">
+                                            <span class="product-detail-info-left">Giá gốc:</span>
+                                            <span class="product-detail-info-gia-da-giam"><?php echo fnPrice(@$product_price); ?> đ</span>
+                                        </div>
+                                        <?php
+                                    }else{
+                                        ?>
+                                        <div class="product-detail-info">
+                                            <span class="product-detail-info-left">Giá gốc:</span>
+                                            <span class="product-detail-info-koala"><?php echo fnPrice(@$product_price); ?> đ</span>
+                                        </div>
+                                        <div class="product-detail-info">
+                                            <span class="product-detail-info-left">Giá đang giảm:</span>
+                                            <span class="product-detail-info-gia-da-giam"><?php echo fnPrice(@$product_sale_price); ?> đ</span>
+                                        </div>
+                                        <?php
+                                    }
+                                    if((float)@$product_price_desc_percent > 0){
+                                        ?>
+                                        <div class="product-detail-info">
+                                            <span class="product-detail-info-left">Tiết kiệm:</span>
+                                            <span class="product-detail-info-gia-tiet-kiem"><?php echo fnPrice((float)@$product_price_tiet_kiem); ?> đ (-<?php echo @$product_price_desc_percent ?>%)</span>
+                                        </div>
+                                        <?php
+                                    }
+                                    if(!empty(@$excerpt)){
+                                        ?>
+                                        <div class="product-detail-excerpt">
+                                            <?php echo @$excerpt; ?>
+                                        </div>
+                                        <?php
+                                    }
                                     ?>
-                                    <div class="product-detail-info">
-                                        <span class="product-detail-info-left">Giá gốc:</span>
-                                        <span class="product-detail-info-gia-da-giam"><?php echo fnPrice(@$product_price); ?> đ</span>
-                                    </div>
+                                    <form class="product-detail-dat-mua-ngay" name="product_mua_ngay">
+                                        <div class="txt-slg">
+                                            <input type="text" name="quantity" onkeypress="return isNumberKey(event);" class="quantity" placeholder="1">
+                                        </div>
+                                        <div class="btn-mua-ngay">
+                                            <a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-add-cart" onclick="javascript:addToCart(<?php echo $post_id; ?>,document.getElementsByName('quantity')[0].value);">
+                                                <span><i class="fas fa-shopping-cart"></i></span>
+                                                <span class="margin-left-5">Mua ngay</span>
+                                            </a>
+                                        </div>
+                                        <div class="clr"></div>
+                                    </form>
                                     <?php
-                                }else{
+                                    if(!empty($dich_vu_va_khuyen_mai)){
+                                        ?>
+                                        <h3 class="dv-km">Dịch vụ và khuyến mãi</h3>
+                                        <div class="ul-dv-km">
+                                            <?php echo @$dich_vu_va_khuyen_mai; ?>
+                                        </div>
+                                        <?php
+                                    }
                                     ?>
-                                    <div class="product-detail-info">
-                                        <span class="product-detail-info-left">Giá gốc:</span>
-                                        <span class="product-detail-info-koala"><?php echo fnPrice(@$product_price); ?> đ</span>
+                                    <div class="product-detail-social">
+                                        <div class="social-box">
+                                            <a href="<?php echo get_field("setting_thong_tin_chung_facebook","option"); ?>">
+                                                <span><i class="fab fa-facebook-f"></i></span>
+                                                <span class="margin-left-5">Facebook</span>
+                                            </a>
+                                        </div>
+                                        <div class="social-box">
+                                            <a href="<?php echo get_field("setting_thong_tin_chung_twitter","option"); ?>">
+                                                <span><i class="fab fa-twitter"></i></span>
+                                                <span class="margin-left-5">Twitter</span>
+                                            </a>
+                                        </div>
+                                        <div class="social-box">
+                                            <a href="<?php echo get_field("setting_thong_tin_chung_google_plus","option"); ?>">
+                                                <span><i class="fab fa-twitter"></i></span>
+                                                <span class="margin-left-5">Google+</span>
+                                            </a>
+                                        </div>
+                                        <div class="social-box">
+                                            <a href="<?php echo get_field("setting_thong_tin_chung_instagram","option"); ?>">
+                                                <span><i class="fab fa-instagram"></i></span>
+                                                <span class="margin-left-5">Instagram</span>
+                                            </a>
+                                        </div>
+                                        <div class="clr"></div>
                                     </div>
-                                    <div class="product-detail-info">
-                                        <span class="product-detail-info-left">Giá đang giảm:</span>
-                                        <span class="product-detail-info-gia-da-giam"><?php echo fnPrice(@$product_sale_price); ?> đ</span>
-                                    </div>
-                                    <?php
-                                }
-                                if((float)@$product_price_desc_percent > 0){
-                                    ?>
-                                    <div class="product-detail-info">
-                                        <span class="product-detail-info-left">Tiết kiệm:</span>
-                                        <span class="product-detail-info-gia-tiet-kiem"><?php echo fnPrice((float)@$product_price_tiet_kiem); ?> đ (-<?php echo @$product_price_desc_percent ?>%)</span>
-                                    </div>
-                                    <?php
-                                }
-                                if(!empty(@$excerpt)){
-                                    ?>
-                                    <div class="product-detail-excerpt">
-                                        <?php echo @$excerpt; ?>
-                                    </div>
-                                    <?php
-                                }
-                                ?>
-                                <form class="product-detail-dat-mua-ngay" name="product_mua_ngay">
-                                    <div class="txt-slg">
-                                        <input type="text" name="quantity" onkeypress="return isNumberKey(event);" class="quantity" placeholder="1">
-                                    </div>
-                                    <div class="btn-mua-ngay">
-                                        <a href="javascript:void(0);" data-toggle="modal" data-target="#modal-alert-add-cart" onclick="javascript:addToCart(<?php echo $post_id; ?>,document.getElementsByName('quantity')[0].value);">
-                                            <span><i class="fas fa-shopping-cart"></i></span>
-                                            <span class="margin-left-5">Mua ngay</span>
-                                        </a>
-                                    </div>
-                                    <div class="clr"></div>
-                                </form>
-                                <?php
-                                if(!empty($dich_vu_va_khuyen_mai)){
-                                    ?>
-                                    <h3 class="dv-km">Dịch vụ và khuyến mãi</h3>
-                                    <div class="ul-dv-km">
-                                        <?php echo @$dich_vu_va_khuyen_mai; ?>
-                                    </div>
-                                    <?php
-                                }
-                                ?>
-                                <div class="product-detail-social">
-                                    <div class="social-box">
-                                        <a href="<?php echo get_field("setting_thong_tin_chung_facebook","option"); ?>">
-                                            <span><i class="fab fa-facebook-f"></i></span>
-                                            <span class="margin-left-5">Facebook</span>
-                                        </a>
-                                    </div>
-                                    <div class="social-box">
-                                        <a href="<?php echo get_field("setting_thong_tin_chung_twitter","option"); ?>">
-                                            <span><i class="fab fa-twitter"></i></span>
-                                            <span class="margin-left-5">Twitter</span>
-                                        </a>
-                                    </div>
-                                    <div class="social-box">
-                                        <a href="<?php echo get_field("setting_thong_tin_chung_google_plus","option"); ?>">
-                                            <span><i class="fab fa-twitter"></i></span>
-                                            <span class="margin-left-5">Google+</span>
-                                        </a>
-                                    </div>
-                                    <div class="social-box">
-                                        <a href="<?php echo get_field("setting_thong_tin_chung_instagram","option"); ?>">
-                                            <span><i class="fab fa-instagram"></i></span>
-                                            <span class="margin-left-5">Instagram</span>
-                                        </a>
-                                    </div>
-                                    <div class="clr"></div>
                                 </div>
                             </div>
                         </div>

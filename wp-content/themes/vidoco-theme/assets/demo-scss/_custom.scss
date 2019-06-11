@@ -1033,110 +1033,151 @@
 				}
 			}
 		}
-		.product-detail-title{
-			margin-top: 15px;
-			font-size: 20px;
-			font-family: $f_bold;
-		}
-		.product-detail-info{
-			margin-top: 10px;
-			.product-detail-info-left{
-				color: #999;
-				font-size: 13px;
+		.box-product-detail-schema{
+			.product-detail-title{
+				margin-top: 15px;
+				font-size: 20px;
 				font-family: $f_bold;
 			}
-			.product-detail-info-right{
-				color: $mau_1;
-				font-family: $f_light;
-				font-size: 13px;
-			}
-			.product-detail-info-koala{
-				color: #999;
-				font-family: $f_light;
-				font-size: 13px;
-				text-decoration: line-through;
-			}
-			.product-detail-info-gia-da-giam{
-				color: $mau_1;
-				font-family: $f_bold;
-				font-size: 15px;
-			}
-			.product-detail-info-gia-tiet-kiem{
-				color: #999;
-				font-family: $f_light;
-				font-size: 15px;
-			}
-		}
-		.product-detail-excerpt{
-			margin-top: 20px;
-			text-align: justify;
-			font-size: 12px;
-			font-family: $f_light;
-		}
-		.product-detail-dat-mua-ngay{
-			margin-top: 20px;
-			.txt-slg{
-				float: left;
-				width: 10%;
-				input{
-					border: 1px solid #f2f2f2;
-					width: 100%;
-					padding: 9px 5px;
-					text-align: center;
+			.product-detail-info{
+				margin-top: 10px;
+				.product-detail-info-left{
+					color: #999;
+					font-size: 13px;
+					font-family: $f_bold;
+				}
+				.product-detail-info-right{
+					color: $mau_1;
+					font-family: $f_light;
+					font-size: 13px;
+				}
+				.product-detail-info-koala{
+					color: #999;
+					font-family: $f_light;
+					font-size: 13px;
+					text-decoration: line-through;
+				}
+				.product-detail-info-gia-da-giam{
+					color: $mau_1;
+					font-family: $f_bold;
+					font-size: 15px;
+				}
+				.product-detail-info-gia-tiet-kiem{
+					color: #999;
+					font-family: $f_light;
+					font-size: 15px;
 				}
 			}
-			.btn-mua-ngay{
-				float: left;
-				margin-left: 10px;
-				a{
-					color: #fff;
-					padding:10px 20px !important;
-					background :$mau_1;
-					text-transform: uppercase;
-					position: relative;
-					overflow: hidden;
-					z-index: 1;
-					display: block;
-					@include p-web(transition,all 0.5s);
-					&:hover{
+			.product-detail-excerpt{
+				margin-top: 20px;
+				text-align: justify;
+				font-size: 12px;
+				font-family: $f_light;
+			}
+			.product-detail-dat-mua-ngay{
+				margin-top: 20px;
+				.txt-slg{
+					float: left;
+					width: 10%;
+					input{
+						border: 1px solid #f2f2f2;
+						width: 100%;
+						padding: 9px 5px;
+						text-align: center;
+					}
+				}
+				.btn-mua-ngay{
+					float: left;
+					margin-left: 10px;
+					a{
+						color: #fff;
+						padding:10px 20px !important;
+						background :$mau_1;
+						text-transform: uppercase;
+						position: relative;
+						overflow: hidden;
+						z-index: 1;
+						display: block;
+						@include p-web(transition,all 0.5s);
+						&:hover{
+							&:before{
+								left: 0;
+							}
+						}
 						&:before{
-							left: 0;
+							content: '';
+							position: absolute;
+							top: 0;
+							left: 100%;
+							width: 100%;
+							height: 100%;
+							background: #0075a1;
+							z-index: -1;
+							@include p-web(transition, all 0.5s);
 						}
 					}
-					&:before{
-						content: '';
-						position: absolute;
-						top: 0;
-						left: 100%;
-						width: 100%;
-						height: 100%;
-						background: #0075a1;
-						z-index: -1;
-						@include p-web(transition, all 0.5s);
+				}
+			}
+			.dv-km{
+				font-family: $f_bold;
+				font-size: 14px;
+				margin-top: 20px;
+			}
+			.ul-dv-km{
+				margin-top: 10px;
+				ul{
+					padding-left: 0;
+					margin-bottom: 0;
+					list-style: none;
+					li{
+						font-size: 12px;
+						font-family: $f_light;
+						padding: 5px 20px;
+						background-image: url('../images/tick.png');
+						background-repeat: no-repeat;
+						background-position: left center;
+						a{
+							color: $mau_1;
+						}
 					}
 				}
 			}
-		}
-		.dv-km{
-			font-family: $f_bold;
-			font-size: 14px;
-			margin-top: 20px;
-		}
-		.ul-dv-km{
-			margin-top: 10px;
-			ul{
-				padding-left: 0;
-				margin-bottom: 0;
-				list-style: none;
-				li{
-					font-size: 12px;
-					font-family: $f_light;
-					padding: 5px 20px;
-					background-image: url('../images/tick.png');
-					background-repeat: no-repeat;
-					background-position: left center;
+			.product-detail-social{
+				margin-top: 20px;
+				.social-box{
+					float:left;
+					margin-left:5px;
+					&:first-child{
+						margin-left: 0;
+					}
 					a{
-						color: $mau_1;
+						color:#666;
+						padding:5px 10px;
+						background :#f1f1f1;
+						text-transform: uppercase;
+						position: relative;
+						overflow: hidden;
+						z-index: 1;
+						display: block;
+						font-size: 10px;
+						@include p-web(transition,all 0.5s);
+						&:hover{
+							&:before{
+								left: 0;
+							}
+							color: #fff;
+						}
+						&:before{
+							content: '';
+							position: absolute;
+							top: 0;
+							left: 100%;
+							width: 100%;
+							height: 100%;
+							background: $mau_1;
+							z-index: -1;
+							@include p-web(transition, all 0.5s);
+						}
 					}
 				}
 			}
@@ -1319,45 +1360,7 @@
 			}
 		}
 	}
-	.product-detail-social{
-		margin-top: 20px;
-		.social-box{
-			float:left;
-			margin-left:5px;
-			&:first-child{
-				margin-left: 0;
-			}
-			a{
-				color:#666;
-				padding:5px 10px;
-				background :#f1f1f1;
-				text-transform: uppercase;
-				position: relative;
-				overflow: hidden;
-				z-index: 1;
-				display: block;
-				font-size: 10px;
-				@include p-web(transition,all 0.5s);
-				&:hover{
-					&:before{
-						left: 0;
-					}
-					color: #fff;
-				}
-				&:before{
-					content: '';
-					position: absolute;
-					top: 0;
-					left: 100%;
-					width: 100%;
-					height: 100%;
-					background: $mau_1;
-					z-index: -1;
-					@include p-web(transition, all 0.5s);
-				}
-			}
-		}
-	}
+
 	.box-sach-moi{
 		padding-top: 20px;
 		.owl-carousel-new-product{
