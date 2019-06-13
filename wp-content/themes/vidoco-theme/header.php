@@ -41,9 +41,7 @@ $permalink_search_product=get_permalink( $page_id_search_product);
 			<div class="col">
 				<div class="header-box">
 					<div class="box-img-header">
-						<a href="<?php echo site_url( '', null ); ?>">
-							<div style="background-image: url('<?php echo get_field( "setting_thong_tin_chung_favicon", "option" ); ?>');background-repeat: no-repeat;background-size:cover;padding-top: calc(100% / (542/176));"></div>
-						</a>
+
 					</div>
 					<div class="box-search">
 						<div class="wishlist">
