@@ -49,6 +49,9 @@ $pagination=$zController->getPagination("Pagination",$arrPagination);
                         <div class="doreco">
                             <?php include get_template_directory()."/block/block-khoang-gia.php"; ?>
                         </div>
+                        <div class="doreco">
+                            <?php include get_template_directory()."/block/block-thuong-hieu.php"; ?>
+                        </div>
                         <div class="margin-top-20">
                             <?php include get_template_directory()."/block/block-ads.php";  ?>
                         </div>

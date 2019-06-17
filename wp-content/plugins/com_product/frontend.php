@@ -24,6 +24,12 @@ class Frontend{
 				return $file;
 			}
 		}
+		if(get_query_var('za_category_nhan_hieu') != ''){
+			$file = PLUGIN_PATH  . "templates" . DS . "frontend" . DS . 'za-category.php';
+			if(file_exists($file)){
+				return $file;
+			}
+		}
 		if(get_query_var('za_category_author') != ''){
 			$file = PLUGIN_PATH  . "templates" . DS . "frontend" . DS . 'za-category.php';
 			if(file_exists($file)){
