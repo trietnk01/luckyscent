@@ -1,24 +1,25 @@
 <div class="khoang-gia">Nhãn hiệu</div>
 <?php
 
-$terms = get_terms( array(
-    'taxonomy' => 'za_category_nhan_hieu',
-    'hide_empty' => false,
-) );
-if(count(@$terms) > 0){
-    ?>
-    <ul class="main-category">
-        <?php
-        foreach (@$terms as $key=>$value) {
-            $term_permalink=get_term_link( @$value, 'za_category_nhan_hieu' );
-            $cat=get_category(@$value,OBJECT,  'raw' );
-            ?>
-            <li><a href="<?php echo @$term_permalink; ?>"><?php echo @$value->name; ?></a></li>
-            <?php
-        }
-        ?>
-    </ul>
-    <?php
-}
+$args = array(
+    'menu'              => '',
+    'container'         => '',
+    'container_class'   => '',
+    'container_id'      => '',
+    'menu_class'        => 'main-category',
+    'echo'              => true,
+    'fallback_cb'       => 'wp_page_menu',
+    'before'            => '',
+    'after'             => '',
+    'link_before'       => '',
+    'link_after'        => '',
+    'items_wrap'        => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+    'depth'             => 3,
+    'walker'            => '',
+    'theme_location'    => 'dm_menu_thuong_hieu' ,
+    'menu_li_actived'       => 'current-menu-item',
+    'menu_item_has_children'=> 'menu-item-has-children',
+);
+wp_nav_menu($args);
 
 ?>

@@ -33,3 +33,9 @@ acf_add_options_sub_page(array(
 	'menu_slug' 	=> 'p_option_child_page',
 	'parent_slug'	=> 'p_option_page',
 ));
+acf_add_options_sub_page(array(
+	'page_title' 	=> 'Thông tin các tab chi tiết sản phẩm',
+	'menu_title'	=> 'Thông tin các tab chi tiết sản phẩm',
+	'menu_slug' 	=> 'p_option_zaproduct_tabs',
+	'parent_slug'	=> 'p_option_page',
+));

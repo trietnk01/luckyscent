@@ -21,7 +21,7 @@
                                             foreach ($data_banner as $key => $value) {
                                                 ?>
                                                 <div class="item">
-                                                    <div style="background-image:url('<?php echo @$value["hp_banner_item"]; ?>');background-repeat: no-repeat;background-size: cover;padding-top:calc(100% / (809/431));"></div>
+                                                    <img src="<?php echo @$value["hp_banner_item"]; ?>" alt="<?php echo get_bloginfo( 'name', 'raw' ); ?>">
                                                 </div>
                                                 <?php
                                             }
@@ -79,129 +79,177 @@
                     $hp_featured_product_rpt=get_field("hp_featured_product_rpt","option");
                     if(count(@$hp_featured_product_rpt) > 0){
                         ?>
-                        <div class="row">
+                        <div class="row margin-top-40">
                             <div class="col">
-                                <div class="product-featured">
-                                    <div class="owl-carousel-featured-product owl-carousel owl-theme owl-loaded">
-                                        <?php
-                                        foreach ($hp_featured_product_rpt as $value) {
-                                            $post_id=$value["hp_featured_product_item"];
-                                            $args=array(
-                                                "post_type"=>"zaproduct",
-                                                "p"=>@$post_id
-                                            );
-                                            $the_query_featured_product=new WP_Query($args);
-                                            if($the_query_featured_product->have_posts()){
-                                                while ($the_query_featured_product->have_posts()) {
-                                                    $the_query_featured_product->the_post();
-                                                    $post_id=$the_query_featured_product->post->ID;
-                                                    $permalink=get_the_permalink(@$post_id);
-                                                    $title=get_the_title(@$post_id);
-                                                    $excerpt=get_the_excerpt(@$post_id);
-                                                    $featured_img=get_the_post_thumbnail_url(@$post_id, 'full');
-                                                    $product_price=get_field("zaproduct_price",@$post_id);
-                                                    $product_price_desc_percent=get_field("zaproduct_price_desc_percent",@$post_id);
-                                                    $product_sale_price=get_field("zaproduct_sale_price",@$post_id);
-                                                    $product_count_view=get_field("zaproduct_count_view",@$post_id);
-                                                    ?>
-                                                    <div class="item">
-                                                        <div class="box-big-featured-product">
-                                                            <div class="box-featured-title-wrapper"><h3 class="box-featured-title"><?php echo wp_trim_words( @$title, 10, "[...]") ?></h3></div>
-                                                            <div class="box-featured-product">
-                                                                <a href="<?php echo @$permalink; ?>">
-                                                                    <figure>
-                                                                        <div style="background-image: url('<?php echo @$featured_img; ?>');background-size: cover;background-repeat: no-repeat;padding-top: calc(100% / (240/200));"></div>
-                                                                    </figure>
-                                                                </a>
+                                <h2 class="sp-noi-bat">
+                                    Dòng sản phẩm nổi bật
+                                </h2>
+                                <div class="owl-carousel-sale-off-on-day owl-carousel owl-theme owl-loaded">
+                                    <?php
+                                    foreach ($hp_featured_product_rpt as $key => $value){
+                                        $post_id=$value["hp_zaproduct_khuyen_mai_item"];
+                                        $args=array(
+                                            "post_type"=>"zaproduct",
+                                            "p"=>@$post_id
+                                        );
+                                        $the_query_featured_product=new WP_Query($args);
+                                        if($the_query_featured_product->have_posts()){
+                                            while ($the_query_featured_product->have_posts()) {
+                                                $the_query_featured_product->the_post();
+                                                $post_id=$the_query_featured_product->post->ID;
+                                                $permalink=get_the_permalink(@$post_id);
+                                                $title=get_the_title(@$post_id);
+                                                $excerpt=get_the_excerpt(@$post_id);
+                                                $featured_img=get_the_post_thumbnail_url(@$post_id, 'full');
+                                                $product_price=get_field("zaproduct_price",@$post_id);
+                                                $product_price_desc_percent=get_field("zaproduct_price_desc_percent",@$post_id);
+                                                $product_sale_price=get_field("zaproduct_sale_price",@$post_id);
+                                                $product_count_view=get_field("zaproduct_count_view",@$post_id);
+                                                ?>
+                                                <div class="item">
+                                                    <div class="sale-off-on-day-box-item">
+                                                        <div class="sale-off-box-hinh-tron">
+                                                            <a href="<?php echo @$permalink; ?>">
+                                                                <img src="<?php echo @$featured_img; ?>" alt="<?php echo @$title; ?>" style="width:150px;">
+                                                            </a>
+                                                            <?php
+                                                            if(floatval(@$product_price_desc_percent) > 0){
+                                                                ?>
+                                                                <div class="sale-off-box">
+                                                                    <div class="sale-off-txt">Sale off</div>
+                                                                    <div class="sale-off-number"><?php echo floatval(@$product_price_desc_percent) ; ?>%</div>
+                                                                </div>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </div>
+                                                        <h3 class="sale-off-on-day-title">
+                                                            <a href="<?php echo @$permalink; ?>"><?php echo wp_trim_words(@$title,55, "[...]" ) ?></a>
+                                                            <div class="post-kk-star-rating">
+                                                                <?php echo do_shortcode( "[ratings]" ); ?>
                                                             </div>
+                                                        </h3>
+                                                        <div class="sale-off-on-day-price">
+                                                            <span class="sale-off-on-day-sale-price"><?php echo fnPrice(@$product_sale_price) ; ?> ₫</span>
+                                                            <?php
+                                                            if(floatval(@$product_price) > floatval(@$product_sale_price)){
+                                                                ?>
+                                                                <span class="sale-off-on-day-sale-original-price"><?php echo fnPrice(@$product_price); ?> ₫</span>
+                                                                <?php
+                                                            }
+                                                            ?>
                                                         </div>
                                                     </div>
-                                                    <?php
-                                                }
-                                                wp_reset_postdata();
+                                                </div>
+                                                <?php
                                             }
+                                            wp_reset_postdata();
                                         }
-                                        ?>
-                                    </div>
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>
                         <?php
                     }
-                    ?>
-                    <div class="row">
-                        <div class="col">
-                            <?php
-                            $hp_featured_category_title_rpt=get_field("hp_featured_category_title_rpt","option");
-                            if(count(@$hp_featured_category_title_rpt) > 0){
-                                ?>
-                                <div class="product-category-box">
+                    $hp_za_category_rpt=get_field("hp_za_category_rpt","option");
+                    if(count(@$hp_za_category_rpt) > 0){
+
+                        foreach ($hp_za_category_rpt as $key => $value) {
+                            $za_category_id=$value["hp_za_category_item"];
+                            $za_category_item=get_term_by( "id",floatval(@$za_category_id), 'za_category', OBJECT,'raw' );
+                            ?>
+                            <div class="row sp-theo-chuyen-muc">
+                                <div class="col">
+                                    <h2 class="sp-noi-bat"><?php echo @$za_category_item->name; ?></h2>
                                     <?php
-                                    foreach ($hp_featured_category_title_rpt as $value_1) {
-                                        $title_1=$value_1["hp_featured_category_title_item"];
-                                        $hp_featured_category_product_rpt=$value_1["hp_featured_category_product_rpt"];
+                                    $args=array(
+                                        "post_type"=>"zaproduct",
+                                        "orderby"=>"id",
+                                        "order"=>"DESC",
+                                        "post_per_page"=>-1,
+                                        "tax_query"=>array(
+                                            array(
+                                                'taxonomy' => 'za_category',
+                                                'field'    => 'term_id',
+                                                'terms'    => array(@$za_category_item->term_id),
+                                            )
+                                        )
+                                    );
+                                    $the_query_spcm=new WP_Query(@$args);
+                                    if($the_query_spcm->have_posts()){
                                         ?>
-                                        <div class="product-guilta">
-                                            <h2 class="product-category-guilta-title"><?php echo wp_trim_words( @$title_1, 8, "[...]" ); ?></h2>
+                                        <div class="owl-carousel-sale-off-on-day owl-carousel owl-theme owl-loaded">
                                             <?php
-                                            if(count(@$hp_featured_category_product_rpt) > 0){
+                                            while ($the_query_spcm->have_posts()) {
+                                                $the_query_spcm->the_post();
+                                                $post_id=$the_query_spcm->post->ID;
+                                                $permalink=get_the_permalink(@$post_id);
+                                                $title=get_the_title(@$post_id);
+                                                $excerpt=get_the_excerpt(@$post_id);
+                                                $featured_img=get_the_post_thumbnail_url(@$post_id, 'full');
+                                                $product_price=get_field("zaproduct_price",@$post_id);
+                                                $product_price_desc_percent=get_field("zaproduct_price_desc_percent",@$post_id);
+                                                $product_sale_price=get_field("zaproduct_sale_price",@$post_id);
+                                                $product_count_view=get_field("zaproduct_count_view",@$post_id);
                                                 ?>
-                                                <div class="owl-carousel-featured-product-category owl-carousel owl-theme owl-loaded">
-                                                    <?php
-                                                    foreach ($hp_featured_category_product_rpt as $value_2) {
-                                                        $post_id=$value_2["hp_featured_category_product_item"];
-                                                        $args=array(
-                                                            "post_type"=>"zaproduct",
-                                                            "p"=>@$post_id
-                                                        );
-                                                        $the_query_cate_featured_product=new WP_Query($args);
-                                                        if($the_query_cate_featured_product->have_posts()){
-                                                            while ($the_query_cate_featured_product->have_posts()){
-                                                                $the_query_cate_featured_product->the_post();
-                                                                $post_id=$the_query_cate_featured_product->post->ID;
-                                                                $permalink=get_the_permalink(@$post_id);
-                                                                $title=get_the_title(@$post_id);
-                                                                $excerpt=get_the_excerpt(@$post_id);
-                                                                $featured_img=get_the_post_thumbnail_url(@$post_id, 'full');
-                                                                $product_price=get_field("zaproduct_price",@$post_id);
-                                                                $product_price_desc_percent=get_field("zaproduct_price_desc_percent",@$post_id);
-                                                                $product_sale_price=get_field("zaproduct_sale_price",@$post_id);
-                                                                $product_count_view=get_field("zaproduct_count_view",@$post_id);
+                                                <div class="item">
+                                                    <div class="sale-off-on-day-box-item">
+                                                        <div class="sale-off-box-hinh-tron">
+                                                            <a href="<?php echo @$permalink; ?>">
+                                                                <img src="<?php echo @$featured_img; ?>" alt="<?php echo @$title; ?>" style="width:150px;">
+                                                            </a>
+                                                            <?php
+                                                            if(floatval(@$product_price_desc_percent) > 0){
                                                                 ?>
-                                                                <div class="item">
-                                                                    <div class="magento">
-                                                                        <div>
-                                                                            <a href="<?php echo @$permalink; ?>">
-                                                                                <figure>
-                                                                                    <div style="background-image: url('<?php echo @$featured_img; ?>');background-repeat: no-repeat;background-size: cover;padding-top: calc(100% / (600/863));"></div>
-                                                                                </figure>
-                                                                            </a>
-                                                                        </div>
-                                                                        <h4 class="magento-title"><a href="<?php echo @$permalink; ?>"><?php echo wp_trim_words(@$title,8,"[...]" ); ?></a></h4>
-                                                                    </div>
+                                                                <div class="sale-off-box">
+                                                                    <div class="sale-off-txt">Sale off</div>
+                                                                    <div class="sale-off-number"><?php echo floatval(@$product_price_desc_percent) ; ?>%</div>
                                                                 </div>
                                                                 <?php
                                                             }
-                                                            wp_reset_postdata();
-                                                        }
-                                                    }
-                                                    ?>
+                                                            ?>
+                                                        </div>
+                                                        <h3 class="sale-off-on-day-title">
+                                                            <a href="<?php echo @$permalink; ?>"><?php echo wp_trim_words(@$title,55, "[...]" ) ?></a>
+                                                            <div class="post-kk-star-rating">
+                                                                <?php echo do_shortcode( "[ratings]" ); ?>
+                                                            </div>
+                                                        </h3>
+                                                        <div class="sale-off-on-day-price">
+                                                            <span class="sale-off-on-day-sale-price"><?php echo fnPrice(@$product_sale_price) ; ?> ₫</span>
+                                                            <?php
+                                                            if(floatval(@$product_price) > floatval(@$product_sale_price)){
+                                                                ?>
+                                                                <span class="sale-off-on-day-sale-original-price"><?php echo fnPrice(@$product_price); ?> ₫</span>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <?php
                                             }
                                             ?>
                                         </div>
                                         <?php
+                                        wp_reset_postdata();
                                     }
                                     ?>
                                 </div>
-                                <?php
-                            }
+                            </div>
+                            <?php
+                        }
+                    }
+                    ?>
+                    <div class="row sp-theo-chuyen-muc">
+                        <div class="col">
+                            <?php
                             $hp_featured_video_rpt=get_field("hp_featured_video_rpt","option");
                             if(count(@$hp_featured_video_rpt) > 0){
                                 ?>
                                 <div class="box-videos">
-                                    <h2 class="sent-bar-video-review">Video</h2>
+                                    <h2 class="sp-noi-bat">Video</h2>
                                     <div class="box-video-wrapper">
                                         <div class="owl-carousel-featured-videos owl-carousel owl-theme owl-loaded">
                                             <?php
@@ -224,14 +272,12 @@
                                                         <div class="item">
                                                             <div class="video-pin-box">
                                                                 <a href="javascript:void(0);" class="js-modal-btn" data-video-id="<?php echo @$video_id; ?>">
-                                                                    <div style="background-image: url('<?php echo @$featured_img; ?>');background-size: cover;background-repeat: no-repeat;padding-top: calc(100% / (359/199));">
-
-                                                                    </div>
+                                                                    <img src="<?php echo @$featured_img; ?>" alt="<?php echo get_bloginfo( 'name','raw' ); ?>">
                                                                     <div class="overlay-youtube">
                                                                     </div>
                                                                     <div class="youtube-icon">
                                                                         <div class="box-youtube-icon">
-                                                                            <div style="background-image: url('<?php echo wp_get_upload_dir()["url"].'/youtube-icon.png'; ?>');background-repeat: no-repeat;background-size: cover;padding-top: calc(100% / (48/48));"></div>
+                                                                            <div class="youtube-icon-xidu"></div>
                                                                         </div>
                                                                     </div>
                                                                 </a>

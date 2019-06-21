@@ -15,89 +15,56 @@ if($the_query_product->have_posts()){
             $product_price_desc_percent=get_field("zaproduct_price_desc_percent",@$post_id);
             $product_sale_price=get_field("zaproduct_sale_price",@$post_id);
             $product_count_view=get_field("zaproduct_count_view",@$post_id);
-            if($k%4==0){
+            if($k%3==0){
                 echo '<div class="row">';
             }
             ?>
-            <div class="col-md-3">
-                <div class="box-product bx-pr-bottom">
-                    <div class="box-sso">
-                        <a href="<?php echo site_url( '', null ) ?>" class="a-overlay">
-                            <?php
-                            if((float)@$product_price_desc_percent > 0){
-                                ?>
-                                <div class="percent-sale">
-                                    <div class="box-cent-sale">
-                                        -<?php echo @$product_price_desc_percent; ?>%
-                                    </div>
-                                </div>
-                                <?php
-                            }
-                            ?>
-                            <div class="box-img">
-                                <div style="background-image: url('<?php echo @$featured_img; ?>');background-size: cover;background-repeat: no-repeat;padding-top: calc(100% / (140/218))"></div>
-                            </div>
-                            <div class="overlay">
-                            </div>
+            <div class="col-md-4">
+                <div class="sale-off-on-day-box-item">
+                    <div class="sale-off-box-hinh-tron">
+                        <a href="<?php echo @$permalink; ?>">
+                            <img src="<?php echo @$featured_img; ?>" alt="<?php echo @$title; ?>" style="width:150px;">
                         </a>
-                        <a href="javascript:void(0)" class="a-add-to-cart" data-toggle="modal" data-target="#modal-alert-add-cart" onclick="addToCart(<?php echo @$post_id; ?>,1);" >
-                            <div class="a-bg-add-to-cart">
-                                <span><i class="fas fa-shopping-cart"></i></span>
-                                <span class="margin-left-5 a-add-mua-ngay">Mua ngay</span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="box-product-info">
-                        <h2 class="box-product-title"><a href="<?php echo @$permalink; ?>"><?php echo wp_trim_words( @$title, 55, null ); ?></a></h2>
-                        <div class="box-product-price">
-                            <div class="box-pr-price-1"><span><?php echo fnPrice(@$product_sale_price); ?></span><span class="margin-left-5">đ</span></div>
-                            <?php
-                            if((float)@$product_price_desc_percent > 0){
-                                ?>
-                                <div class="box-pr-price-2">-<?php echo @$product_price_desc_percent; ?>%</div>
-                                <?php
-                            }
-                            ?>
-                            <div class="clr"></div>
-                        </div>
                         <?php
-                        if((float)@$product_sale_price < (float)@$product_price){
+                        if(floatval(@$product_price_desc_percent) > 0){
                             ?>
-                            <div class="box-product-price-through-margin">
-                                <span class="bx-pr-pr-through"><span><?php echo fnPrice(@$product_price); ?></span><span class="margin-left-5">₫</span></span>
+                            <div class="sale-off-box">
+                                <div class="sale-off-txt">Sale off</div>
+                                <div class="sale-off-number"><?php echo floatval(@$product_price_desc_percent) ; ?>%</div>
                             </div>
                             <?php
                         }
                         ?>
-                        <div class="danh-gia-bang-ngoi-sao">
-                            <div class="ngoi-sao">
-                                <span><i class="far fa-star"></i></span>
-                                <span><i class="far fa-star"></i></span>
-                                <span><i class="far fa-star"></i></span>
-                                <span><i class="far fa-star"></i></span>
-                            </div>
-                            <div class="number-user">
-                                <?php echo fnPrice(@$product_count_view);  ?>
-                            </div>
-                            <div class="box-product-user">
-                                <i class="fas fa-user"></i>
-                            </div>
-                            <div class="clr"></div>
+                    </div>
+                    <h3 class="sale-off-on-day-title">
+                        <a href="<?php echo @$permalink; ?>"><?php echo wp_trim_words(@$title,55, "[...]" ) ?></a>
+                        <div class="post-kk-star-rating">
+                            <?php echo do_shortcode( "[ratings]" ); ?>
                         </div>
+                    </h3>
+                    <div class="sale-off-on-day-price">
+                        <span class="sale-off-on-day-sale-price"><?php echo fnPrice(@$product_sale_price) ; ?> ₫</span>
+                        <?php
+                        if(floatval(@$product_price) > floatval(@$product_sale_price)){
+                            ?>
+                            <span class="sale-off-on-day-sale-original-price"><?php echo fnPrice(@$product_price); ?> ₫</span>
+                            <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
             <?php
             $k++;
-            if($k%4==0 || $k==$the_query_product->post_count){
+            if($k%3==0 || $k==$the_query_product->post_count){
                 echo '</div>';
             }
         }
         wp_reset_postdata();
         ?>
     </div>
-    <div class="margin-top-15">
-        <?php echo @$pagination->showPagination(); ?>
+    <div class="row margin-top-15">
+        <div class="col"><?php echo @$pagination->showPagination(); ?></div>
     </div>
     <?php
 }else{

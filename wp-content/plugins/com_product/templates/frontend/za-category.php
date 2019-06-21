@@ -12,7 +12,7 @@ $the_query_product=$wp_query;
 
 /* end set the_query */
 /* start setup pagination */
-$totalItemsPerPage=8;
+$totalItemsPerPage=12;
 $pageRange=3;
 $currentPage=1;
 if(!empty(@$_POST["filter_page"]))          {
