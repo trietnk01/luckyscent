@@ -76,6 +76,49 @@
                         </div>
                     </div>
                     <?php
+                    $source_term_trade= get_terms( array('taxonomy' => 'za_category_nhan_hieu','hide_empty' => false,'parent' => 0 ) );
+                    if(count(@$source_term_trade) > 0){
+                        ?>
+                        <div class="box-trade">
+                            <?php
+                            $k=0;
+                            foreach ($source_term_trade as $key => $value) {
+                                $permalink=get_term_link( $value, 'za_category_nhan_hieu' );
+                                $featured_img=get_field('za_category_nhan_hieu_featured_img', @$value);
+                                $title=$value->name;
+                                if($k%4==0){
+                                    echo '<div class="row">';
+                                }
+                                ?>
+                                <div class="col-md-3">
+                                    <div class="box-oc-vit-bulong-item">
+                                        <div class="box-oc-bu-img">
+                                            <a href="<?php echo @$permalink; ?>">
+                                                <div class="box-product-featured-img">
+                                                    <img src="<?php echo @$featured_img; ?>" alt="<?php echo @$title; ?>">
+                                                </div>
+                                                <div class="panel-top-to-bottom"></div>
+                                                <div class="panel-bottom-to-top"></div>
+                                                <div class="panel-link">
+                                                    <div class="panel-circle">
+                                                        <i class="fas fa-link"></i>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <h3 class="box-oc-bu-title"><a href="<?php echo @$permalink; ?>"><?php echo wp_trim_words( @$title,55,null ) ; ?></a></h3>
+                                    </div>
+                                </div>
+                                <?php
+                                $k++;
+                                if($k%4==0 ||  $k == count(@$source_term_trade)){
+                                    echo '</div>';
+                                }
+                            }
+                            ?>
+                        </div>
+                        <?php
+                    }
                     $hp_featured_product_rpt=get_field("hp_featured_product_rpt","option");
                     if(count(@$hp_featured_product_rpt) > 0){
                         ?>
