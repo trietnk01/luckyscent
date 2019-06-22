@@ -87,7 +87,7 @@
                                 <div class="owl-carousel-sale-off-on-day owl-carousel owl-theme owl-loaded">
                                     <?php
                                     foreach ($hp_featured_product_rpt as $key => $value){
-                                        $post_id=$value["hp_zaproduct_khuyen_mai_item"];
+                                        $post_id=$value["hp_featured_product_item"];
                                         $args=array(
                                             "post_type"=>"zaproduct",
                                             "p"=>@$post_id
