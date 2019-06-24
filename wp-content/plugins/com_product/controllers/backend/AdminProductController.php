@@ -8,6 +8,11 @@ class AdminProductController{
 		preg_match('#(?:.+\/)(.+)#', $_SERVER['SCRIPT_NAME'],$matches);
 		$phpFile = $matches[1];
 		if($zController->getParams("post_type")=="zaproduct"){
+			if($phpFile == 'post.php' || $phpFile == 'post-new.php'){
+				if($zController->isPost()){
+					add_action("save_post",array($this,"save"));
+				}
+			}
 			if($phpFile == 'edit.php'){
 				add_filter('manage_posts_columns', array($this,'add_column'));
 				add_action('manage_zaproduct_posts_custom_column', array($this,'display_value_column'),10,2);
@@ -65,6 +70,22 @@ class AdminProductController{
 		$columns['view'] 	= 'view';
 		return $columns;
 	}
+	public function add_column($columns){
+		$newArr = array();
+		foreach ($columns as $key => $title){
+			$newArr[$key] = $title;
+			if($key == 'author'){
+				$newArr['category'] = __('Category');
+			}
+		}
+
+		$new_columns = array(
+			'view'=> __('View'),
+			'id' => __('ID')
+		);
+		$newArr = array_merge($newArr,$new_columns);
+		return $newArr;
+	}
 	public function display_value_column($column,$post_id){
 		if($column == 'id'){
 			echo $post_id;
@@ -83,26 +104,19 @@ class AdminProductController{
 			echo get_the_term_list($post_id, 'za_category','', ', ');
 		}
 	}
-	public function add_column($columns){
-		$newArr = array();
-		foreach ($columns as $key => $title){
-			$newArr[$key] = $title;
-			if($key == 'author'){
-				$newArr['category'] = __('Category');
-			}
-		}
-
-		$new_columns = array(
-			'view'=> __('View'),
-			'id' => __('ID')
-		);
-		$newArr = array_merge($newArr,$new_columns);
-		return $newArr;
-	}
 	public function create_id($val){
 		return $this->_prefix_id . $val;
 	}
 	public function create_key($val){
 		return $this->_prefix_key . $val;
+	}
+	public function save($post_id){
+		/*preg_match('#(?:.+\/)(.+)#', $_SERVER['SCRIPT_NAME'],$matches);
+		$phpFile = $matches[1];
+		echo "<pre>".print_r($phpFile,true)."</pre>";die();
+		if(strcmp(@$phpFile, "post-new.php") == 0){
+			$sku="SP".randomCodeNumber();
+			update_post_meta( $post_id, 'zaproduct_sku', $sku);
+		}*/
 	}
 }
