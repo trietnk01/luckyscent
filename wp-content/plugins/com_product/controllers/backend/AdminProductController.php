@@ -111,12 +111,14 @@ class AdminProductController{
 		return $this->_prefix_key . $val;
 	}
 	public function save($post_id){
-		/*preg_match('#(?:.+\/)(.+)#', $_SERVER['SCRIPT_NAME'],$matches);
-		$phpFile = $matches[1];
-		echo "<pre>".print_r($phpFile,true)."</pre>";die();
-		if(strcmp(@$phpFile, "post-new.php") == 0){
-			$sku="SP".randomCodeNumber();
-			update_post_meta( $post_id, 'zaproduct_sku', $sku);
-		}*/
+        $args=array(
+            "post_type"=>"zaproduct",
+            "p"=>@$post_id
+        );
+        $the_query_hllw=new WP_Query(@$args);
+        if(!$the_query_hllw->have_posts()){
+            $sku="SP".randomCodeNumber();
+            update_post_meta( $post_id, 'zaproduct_sku', $sku);
+        }
 	}
 }
